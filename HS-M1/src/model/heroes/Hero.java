@@ -79,7 +79,7 @@ public abstract class Hero  implements MinionListener{
 		return minions;
 	}
 
-	public static final ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions, int count) {
+	public static final ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions, int count) throws CloneNotSupportedException {
 		ArrayList<Minion> res = new ArrayList<Minion>();
 		int i = 0;
 		while (i < count) {
@@ -93,12 +93,12 @@ public abstract class Hero  implements MinionListener{
 			}
 			if (occ == 0)
 			{
-				res.add(minion);
+				res.add(minion.clone());
 				i++;
 			}
 			else if(occ==1 && minion.getRarity()!=Rarity.LEGENDARY)
 			{
-				res.add(minion);
+				res.add(minion.clone());
 				i++;
 			}
 		}

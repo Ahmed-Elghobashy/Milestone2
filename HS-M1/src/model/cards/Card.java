@@ -34,5 +34,10 @@ public abstract class Card {
 		else if (this.manaCost < 0)
 			this.manaCost = 0;
 	}
+	public Card clone() throws CloneNotSupportedException {
+		return (Card) super.clone();
+		
+	}
+
 
 }
