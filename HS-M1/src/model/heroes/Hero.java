@@ -5,11 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import engine.ActionValidator;
 import model.cards.Card;
 import model.cards.Rarity;
 import model.cards.minions.Icehowl;
 import model.cards.minions.Minion;
 import model.cards.minions.MinionListener;
+
 
 public abstract class Hero  implements MinionListener{
 	private String name;
@@ -22,6 +24,8 @@ public abstract class Hero  implements MinionListener{
 	private ArrayList<Card> hand;
 	@SuppressWarnings("unused")
 	private int fatigueDamage;
+	private HeroListener listener;
+	private ActionValidator validator;
 
 	public Hero(String name) throws IOException, CloneNotSupportedException {
 		this.name = name;
@@ -169,4 +173,5 @@ public abstract class Hero  implements MinionListener{
 	{
 		deck.remove(minion);
 	}
+	
 }
