@@ -67,12 +67,8 @@ public class Game implements ActionValidator , HeroListener
 		{
 			throw new InvalidTargetException();
 		}
-		if(attacker.getAttack()==0)
-		{
-			throw new CannotAttackException();
-		}
-
-		if(attacker.isSleeping() || attacker.isAttacked())
+		
+       if(attacker.isSleeping() || attacker.isAttacked() || attacker.getAttack()==0)
 		{
 		 throw new CannotAttackException();
 		} 

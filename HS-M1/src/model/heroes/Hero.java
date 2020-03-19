@@ -255,6 +255,7 @@ public abstract class Hero  implements MinionListener{
 	 }
 	 public void endTurn() throws FullHandException, CloneNotSupportedException
 	 {
+		 
 		 listener.endTurn();
 	 }
 	 public Card drawCard() throws FullHandException, CloneNotSupportedException
