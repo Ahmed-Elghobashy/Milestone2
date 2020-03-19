@@ -63,7 +63,7 @@ public class Game implements ActionValidator , HeroListener
 	public void validateAttack(Minion attacker, Minion target)
 			throws CannotAttackException, NotSummonedException, TauntBypassException, InvalidTargetException 
 	{
-		if(currentHero.getDeck().contains(target))
+		if(currentHero.getField().contains(target))
 		{
 			throw new InvalidTargetException();
 		}
@@ -191,7 +191,7 @@ public class Game implements ActionValidator , HeroListener
 	
 	public Game() 
 	{
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public static void updateMinions(Hero hero)

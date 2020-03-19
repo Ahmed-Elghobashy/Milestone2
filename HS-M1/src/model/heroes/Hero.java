@@ -28,7 +28,6 @@ public abstract class Hero  implements MinionListener{
 	private ArrayList<Card> deck;
 	private ArrayList<Minion> field;
 	private ArrayList<Card> hand;
-	@SuppressWarnings("unused")
 	private int fatigueDamage;
 	private HeroListener listener;
 	private ActionValidator validator;
