@@ -173,5 +173,16 @@ public abstract class Hero  implements MinionListener{
 	{
 		deck.remove(minion);
 	}
+
+	public HeroListener getListener() {
+		return listener;
+	}
+
+	public void setListener(HeroListener listener) {
+		this.listener = listener;
+	}
+	public void setValidator(ActionValidator validator) {
+		this.validator = validator;
+	}
 	
 }
