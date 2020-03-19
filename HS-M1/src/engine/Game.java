@@ -174,12 +174,14 @@ public class Game implements ActionValidator , HeroListener
 		currentHero=opponent;
 		opponent= tempHero;
 		
-		//updates the current hero power
+		//updates the current hero manaCrystal
 		currentHero.setHeroPowerUsed(false);
 		if(currentHero.getTotalManaCrystals()<10)
 		 currentHero.setTotalManaCrystals(currentHero.getTotalManaCrystals()+1);
 		currentHero.setCurrentManaCrystals(currentHero.getTotalManaCrystals());
 		updateMinions(currentHero);
+		currentHero.drawCard();
+		
 		
 		
 		
