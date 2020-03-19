@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import exceptions.FullFieldException;
+import exceptions.FullHandException;
+import exceptions.HeroPowerAlreadyUsedException;
+import exceptions.NotEnoughManaException;
+import exceptions.NotYourTurnException;
 import model.cards.Rarity;
 import model.cards.minions.Minion;
 import model.cards.spells.CurseOfWeakness;
@@ -30,6 +35,15 @@ public class Warlock extends Hero {
 		getDeck().add(wilfred);
 		Collections.shuffle(getDeck());
 
+	}
+
+	@Override
+	public void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
+			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException {
+		
+			if(target instanceof Hero)
+				((Hero) target).setCurrentHP(((Hero) target).getCurrentHP()-2);
+			//drawCard();
 	}
 	
 

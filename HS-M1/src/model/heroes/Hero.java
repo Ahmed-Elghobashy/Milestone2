@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import engine.ActionValidator;
+import exceptions.*;
 import model.cards.Card;
 import model.cards.Rarity;
 import model.cards.minions.Icehowl;
@@ -35,6 +36,8 @@ public abstract class Hero  implements MinionListener{
 		hand = new ArrayList<Card>();
 		buildDeck();
 	}
+	public abstract void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
+	NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException ;
 
 	public abstract void buildDeck() throws IOException,CloneNotSupportedException;
 
