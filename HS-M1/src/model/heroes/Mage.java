@@ -12,12 +12,12 @@ import model.cards.spells.Pyroblast;
 
 public class Mage extends Hero {
 
-	public Mage() throws IOException {
+	public Mage() throws IOException, CloneNotSupportedException {
 		super("Jaina Proudmoore");
 	}
 
 	@Override
-	public void buildDeck() throws IOException {
+	public void buildDeck() throws IOException, CloneNotSupportedException {
 		ArrayList<Minion> neutrals = getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),13);
 		getDeck().addAll(neutrals);
 		for (int i = 0; i < 2; i++) {

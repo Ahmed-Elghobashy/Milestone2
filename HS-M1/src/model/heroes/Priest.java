@@ -12,12 +12,12 @@ import model.cards.spells.ShadowWordDeath;
 
 public class Priest extends Hero {
 
-	public Priest() throws IOException {
+	public Priest() throws IOException, CloneNotSupportedException {
 		super("Anduin Wrynn");
 	}
 
 	@Override
-	public void buildDeck() throws IOException {
+	public void buildDeck() throws IOException, CloneNotSupportedException {
 		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),13);
 		getDeck().addAll(neutrals);
 		for(int i = 0 ; i < 2; i++)
