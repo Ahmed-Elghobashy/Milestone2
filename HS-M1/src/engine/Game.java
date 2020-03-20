@@ -25,6 +25,7 @@ public class Game implements ActionValidator , HeroListener
 	private Hero secondHero;
 	private Hero currentHero;
 	private Hero opponent;
+	private GameListener listener;
 	
 	public Game(Hero p1, Hero p2)
 	{
@@ -157,7 +158,8 @@ public class Game implements ActionValidator , HeroListener
 
 	public void onHeroDeath()
 	{
-		
+		if(currentHero.getCurrentHP()==0 || opponent.getCurrentHP()==0)
+			listener.onGameOver();
 	}
 
 	public void damageOpponent(int amount)
@@ -200,6 +202,10 @@ public class Game implements ActionValidator , HeroListener
 			minion.setAttacked(false);
 			minion.setSleeping(false);
 		}
+	}
+
+	public void setListener(GameListener listener) {
+		this.listener = listener;
 	}
 
 	
