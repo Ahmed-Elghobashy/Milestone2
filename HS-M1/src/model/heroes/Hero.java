@@ -271,13 +271,10 @@ public abstract class Hero  implements MinionListener{
 		 {
 			 throw new FullHandException(deck.get(0));
 		 }
-		 if(deck.size()==1)
-			 fatigueDamage=1;
 		 if(deck.size()==0)
 		 {
-			 this.setCurrentHP(getCurrentHP()-fatigueDamage);
-			 fatigueDamage++;
-			 
+			 this.setCurrentHP(getCurrentHP()-(++fatigueDamage));
+			 return null;
 		 }
 		 Card toBeDrawn =deck.remove(0);
 		 Card clone =toBeDrawn.clone();
