@@ -37,12 +37,17 @@ public class Warlock extends Hero {
 
 	}
 
-	@Override
-	public void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
-			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException {
-		
-			if(target instanceof Hero)
-				((Hero) target).setCurrentHP(((Hero) target).getCurrentHP()-2);
+	public void useHeroPower(Hero target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
+			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException
+	{
+			super.useHeroPower();
+			if(this.getHand().size()==10)
+				throw new FullHandException(getDeck().get(0));
+			else 
+			{
+			  getHand().add(drawCard());
+			}
+			target.setCurrentHP(target.getCurrentHP()-2);
 			//drawCard();
 	}
 	

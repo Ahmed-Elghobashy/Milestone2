@@ -40,10 +40,11 @@ public class Hunter extends Hero {
 		Collections.shuffle(getDeck());
 	}
 
-	@Override
+	
 	public void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
 			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
 	{
+		super.useHeroPower();
 		if(target instanceof Hero)
 		{
 			((Hero) target).setCurrentHP(((Hero) target).getCurrentHP()-2);

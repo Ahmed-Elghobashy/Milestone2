@@ -40,7 +40,7 @@ public abstract class Hero  implements MinionListener{
 		hand = new ArrayList<Card>();
 		buildDeck();
 	}
-	public  void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
+	public  void useHeroPower() throws NotEnoughManaException, HeroPowerAlreadyUsedException,
 	NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
 	{
 		validator.validateTurn(this);

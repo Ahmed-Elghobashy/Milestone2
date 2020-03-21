@@ -37,9 +37,10 @@ public class Mage extends Hero {
 
 	}
 
-	@Override
 	public void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
-			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException {
+			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
+	{
+		super.useHeroPower();
 		if(target instanceof Minion)
 		{
 			((Minion) target).setCurrentHP(((Minion) target).getCurrentHP()-1);
