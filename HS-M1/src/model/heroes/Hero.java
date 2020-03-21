@@ -43,6 +43,8 @@ public abstract class Hero  implements MinionListener{
 	public  void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
 	NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
 	{
+		validator.validateTurn(this);
+		validator.validateUsingHeroPower(this);
 		if(currentManaCrystals<2)
 			throw new NotEnoughManaException();
 	}

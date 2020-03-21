@@ -7,6 +7,7 @@ import java.util.Collections;
 import exceptions.FullFieldException;
 import exceptions.FullHandException;
 import exceptions.HeroPowerAlreadyUsedException;
+import exceptions.InvalidTargetException;
 import exceptions.NotEnoughManaException;
 import exceptions.NotYourTurnException;
 import model.cards.Rarity;
@@ -41,7 +42,8 @@ public class Priest extends Hero {
 	@Override
 	public void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
 			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException {
-			if(target instanceof Minion)
+			
+		 if(target instanceof Minion)
 			{
 				((Minion) target).setCurrentHP(((Minion) target).getCurrentHP()+2);
 			}
