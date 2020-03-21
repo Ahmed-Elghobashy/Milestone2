@@ -13,14 +13,15 @@ public class KillCommand extends Spell implements MinionTargetSpell, HeroTargetS
 	}
 
 	@Override
-	public void performAction(Hero h) {
-		// TODO Auto-generated method stub
+	public void performAction(Hero h)
+	{
+		h.setCurrentHP(h.getCurrentHP()-3);
 		
 	}
 
 	@Override
-	public void performAction(Minion m) throws InvalidTargetException {
-		// TODO Auto-generated method stub
-		
+	public void performAction(Minion m) throws InvalidTargetException 
+	{
+		// don't know when to throw the exception
 	}
 }

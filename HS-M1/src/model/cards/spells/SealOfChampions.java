@@ -12,8 +12,11 @@ public class SealOfChampions extends Spell implements MinionTargetSpell {
 	}
 
 	@Override
-	public void performAction(Minion m) throws InvalidTargetException {
-		// TODO Auto-generated method stub
+	public void performAction(Minion m) throws InvalidTargetException 
+	{
+		// We should check if the minion is not a friendly minion and if it is we should throw InvalidTargetException
+		m.setDivine(true);
+		m.setAttack(m.getAttack()+3);
 		
 	}
 

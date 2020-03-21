@@ -12,8 +12,17 @@ public class ShadowWordDeath extends Spell implements MinionTargetSpell {
 	}
 
 	@Override
-	public void performAction(Minion m) throws InvalidTargetException {
-		// TODO Auto-generated method stub
+	public void performAction(Minion m) throws InvalidTargetException 
+	{
 		
+	// We should check if the minion is a friendly minion and if it is we should throw InvalidTargetException
+		if(m.getCurrentHP()<5)
+			throw new InvalidTargetException();
+	// Should also notify the game listener of the minion's death
+        m.setDivine(false);
+		m.setCurrentHP(0);
+		
+		
+	
 	}
 }

@@ -13,9 +13,18 @@ public class TwistingNether extends Spell implements AOESpell {
 	}
 
 	@Override
-	public void performAction(ArrayList<Minion> oppField, ArrayList<Minion> curField) {
-		// TODO Auto-generated method stub
-		
+	public void performAction(ArrayList<Minion> oppField, ArrayList<Minion> curField) 
+	{
+      for (Minion minion : oppField)
+      {
+    	  minion.setDivine(false);
+    	  minion.setCurrentHP(0);
+	  }	
+      for (Minion minion : curField)
+      {
+    	  minion.setDivine(false);
+    	  minion.setCurrentHP(0);
+	  }	
 	}
 
 }

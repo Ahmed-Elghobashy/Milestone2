@@ -12,14 +12,17 @@ public class Pyroblast extends Spell implements HeroTargetSpell, MinionTargetSpe
 	}
 
 	@Override
-	public void performAction(Minion m) throws InvalidTargetException {
-		// TODO Auto-generated method stub
+	public void performAction(Minion m) throws InvalidTargetException 
+	{
+		// We should check if the minion is a friendly minion and if it is we should throw InvalidTargetException
+		m.setCurrentHP(m.getCurrentHP()-10);
 		
 	}
 
 	@Override
-	public void performAction(Hero h) {
-		// TODO Auto-generated method stub
+	public void performAction(Hero h) 
+	{
+		h.setCurrentHP(h.getCurrentHP()-10);
 		
 	}
 	

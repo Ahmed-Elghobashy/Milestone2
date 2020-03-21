@@ -40,8 +40,12 @@ public abstract class Hero  implements MinionListener{
 		hand = new ArrayList<Card>();
 		buildDeck();
 	}
-	public abstract void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
-	NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException ;
+	public  void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
+	NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
+	{
+		if(currentManaCrystals<2)
+			throw new NotEnoughManaException();
+	}
 
 	public abstract void buildDeck() throws IOException,CloneNotSupportedException;
 
@@ -274,7 +278,27 @@ public abstract class Hero  implements MinionListener{
 			 
 		 }
 		 Card toBeDrawn =deck.remove(0);
+		 Card clone =toBeDrawn.clone();
+		 getHand().add(toBeDrawn);
+		 if(hasChromaggus(this))
+			 if(hand.size()==10)
+				 throw new FullHandException(clone);
+		     else
+		     {
+		    	 hand.add(clone);
+			 } 
+			 
 		  return toBeDrawn;
+	 }
+	 public static boolean hasChromaggus(Hero hero)
+	 {
+	   for(Minion minion : hero.getField())
+	   {
+		   if(minion.getName().equals("Chromaggus"))
+			   return true;
+		   
+	   }
+	   return false;
 	 }
 	
 	
