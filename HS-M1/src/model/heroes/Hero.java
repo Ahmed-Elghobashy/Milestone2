@@ -256,7 +256,7 @@ public abstract class Hero  implements MinionListener{
 	 {
 		 validator.validateTurn(this);
 		 validator.validateManaCost((Card) s);
-		 s.performAction(m);
+		 this.currentHP+=(s.performAction(m));
 		 hand.remove(s);
 	 }
 	 public void endTurn() throws FullHandException, CloneNotSupportedException
