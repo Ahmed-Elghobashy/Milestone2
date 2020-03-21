@@ -16,11 +16,14 @@ public class ShadowWordDeath extends Spell implements MinionTargetSpell {
 	{
 		
 	// We should check if the minion is a friendly minion and if it is we should throw InvalidTargetException
-		if(m.getCurrentHP()<5)
+		if(m.getAttack()<5)
 			throw new InvalidTargetException();
 	// Should also notify the game listener of the minion's death
-        m.setDivine(false);
-		m.setCurrentHP(0);
+		if(m.isDivine())
+         m.setDivine(false);
+		else 
+			m.setCurrentHP(0);	
+		
 		
 		
 	

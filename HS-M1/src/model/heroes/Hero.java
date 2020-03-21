@@ -132,6 +132,8 @@ public abstract class Hero  implements MinionListener{
 			this.currentHP = 0;
 			
 		}
+		if(currentHP==0)
+			listener.onHeroDeath();
 	}
 
 	public int getTotalManaCrystals() {

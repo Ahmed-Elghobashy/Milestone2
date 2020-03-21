@@ -25,7 +25,10 @@ public class MultiShot extends Spell implements AOESpell
 		if(oppField.size()==1)
 		{
 			Minion minion = oppField.get(0);
-			minion.setCurrentHP(minion.getCurrentHP()-3);
+			if(minion.isDivine())
+				minion.setDivine(false);
+			else 
+			   minion.setCurrentHP(minion.getCurrentHP()-3);
 			return;
 		}
 		Minion firstMinionAttacked=null;
@@ -37,7 +40,10 @@ public class MultiShot extends Spell implements AOESpell
 		 Minion randMinion= oppField.get(randIndex);
 	     if(randMinion!=firstMinionAttacked || firstMinionAttacked==null)
 		  {
-	    	 randMinion.setCurrentHP(randMinion.getCurrentHP()-3);
+	    	 if(randMinion.isDivine())
+	    		 randMinion.setDivine(false);
+	    	 else 
+	    	     randMinion.setCurrentHP(randMinion.getCurrentHP()-3);
 	    	 firstMinionAttacked=randMinion;
 	    	 attacks++;
 		  }

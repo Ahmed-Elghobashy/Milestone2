@@ -17,12 +17,10 @@ public class TwistingNether extends Spell implements AOESpell {
 	{
       for (Minion minion : oppField)
       {
-    	  minion.setDivine(false);
     	  minion.setCurrentHP(0);
 	  }	
       for (Minion minion : curField)
       {
-    	  minion.setDivine(false);
     	  minion.setCurrentHP(0);
 	  }	
 	}

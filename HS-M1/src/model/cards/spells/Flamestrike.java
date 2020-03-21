@@ -14,8 +14,15 @@ public class Flamestrike extends Spell implements AOESpell {
 	}
 
 	@Override
-	public void performAction(ArrayList<Minion> oppField, ArrayList<Minion> curField) {
-		// TODO Auto-generated method stub
-		
+	public void performAction(ArrayList<Minion> oppField, ArrayList<Minion> curField) 
+	{
+		for (Minion minion : oppField)
+		{
+			if(minion.isDivine())
+				minion.setDivine(false);
+			else 
+				minion.setCurrentHP(minion.getCurrentHP()-4);
+			
+		}
 	}
 }

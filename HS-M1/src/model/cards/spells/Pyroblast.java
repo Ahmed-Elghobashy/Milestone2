@@ -14,8 +14,10 @@ public class Pyroblast extends Spell implements HeroTargetSpell, MinionTargetSpe
 	@Override
 	public void performAction(Minion m) throws InvalidTargetException 
 	{
-		// We should check if the minion is a friendly minion and if it is we should throw InvalidTargetException
-		m.setCurrentHP(m.getCurrentHP()-10);
+		if(m.isDivine())
+			m.setDivine(false);
+		else 
+			m.setCurrentHP(m.getCurrentHP()-10);
 		
 	}
 
