@@ -199,9 +199,9 @@ public abstract class Hero  implements MinionListener{
 	}
 	public void playMinion(Minion m) throws NotYourTurnException, NotEnoughManaException, FullFieldException 
 	{
+		validator.validateTurn(this);
 		validator.validatePlayingMinion(m);
 		validator.validateManaCost(m);
-		validator.validateTurn(this);
 		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-m.getManaCost());
 		getHand().remove(m);
 		getField().add(m);
