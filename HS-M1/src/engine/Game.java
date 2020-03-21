@@ -31,7 +31,10 @@ public class Game implements ActionValidator , HeroListener
 	{
 		firstHero=p1;
 		secondHero=p2;
-		
+		firstHero.setListener(this);
+		secondHero.setListener(this);
+		firstHero.setValidator(this);
+		secondHero.setValidator(this);
 		int coin = (int) (Math.random()*2);
 		currentHero= coin==0?firstHero:secondHero;
 		opponent= currentHero==firstHero?secondHero:firstHero;
