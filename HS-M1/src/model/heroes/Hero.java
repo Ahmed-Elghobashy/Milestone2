@@ -45,8 +45,6 @@ public abstract class Hero  implements MinionListener{
 	{
 		validator.validateTurn(this);
 		validator.validateUsingHeroPower(this);
-		if(currentManaCrystals<2)
-			throw new NotEnoughManaException();
 	}
 
 	public abstract void buildDeck() throws IOException,CloneNotSupportedException;
