@@ -17,6 +17,7 @@ import model.cards.spells.FieldSpell;
 import model.cards.spells.HeroTargetSpell;
 import model.cards.spells.LeechingSpell;
 import model.cards.spells.MinionTargetSpell;
+import model.cards.spells.Spell;
 
 
 public abstract class Hero  implements MinionListener{
@@ -225,6 +226,7 @@ public abstract class Hero  implements MinionListener{
 	public void castSpell(FieldSpell s) throws NotYourTurnException, NotEnoughManaException
 	{
 		validator.validateTurn(this);
+		kalycgosEffect((Spell)s);
 		validator.validateManaCost((Card) s);
 		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(field);
@@ -233,6 +235,7 @@ public abstract class Hero  implements MinionListener{
 	public void castSpell(AOESpell s, ArrayList<Minion >oppField) throws NotYourTurnException, NotEnoughManaException
 	{
 		validator.validateTurn(this);
+		kalycgosEffect((Spell)s);
 		validator.validateManaCost((Card) s);
 		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(oppField, field);
@@ -244,6 +247,7 @@ public abstract class Hero  implements MinionListener{
 	NotEnoughManaException, InvalidTargetException
 	{
 		validator.validateTurn(this);
+		kalycgosEffect((Spell)s);
 		validator.validateManaCost((Card) s);
 		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(m);
@@ -252,6 +256,7 @@ public abstract class Hero  implements MinionListener{
 	public void castSpell(HeroTargetSpell s, Hero h) throws NotYourTurnException, NotEnoughManaException
 	{
 		validator.validateTurn(this);
+		kalycgosEffect((Spell)s);
 		validator.validateManaCost((Card) s);
 		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(h);
@@ -260,6 +265,7 @@ public abstract class Hero  implements MinionListener{
 	 public void castSpell(LeechingSpell s, Minion m) throws NotYourTurnException, NotEnoughManaException
 	 {
 		 validator.validateTurn(this);
+		 kalycgosEffect((Spell)s);
 		 validator.validateManaCost((Card) s);
 		 this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		 this.currentHP+=(s.performAction(m));
@@ -305,6 +311,20 @@ public abstract class Hero  implements MinionListener{
 	   }
 	   return false;
 	 }
-	
-	
-}
+	 public void kalycgosEffect(Spell s)
+	 {
+		 if(this instanceof Mage)
+		 {
+			 for (Minion minion : getField())
+		 {
+				 if(minion.getName()=="Kalycgos")
+					 {
+					 s.setManaCost(s.getManaCost()-4);
+					 return;
+					 }
+		 }
+		 
+	     }
+	   }
+	 
+ }	 
