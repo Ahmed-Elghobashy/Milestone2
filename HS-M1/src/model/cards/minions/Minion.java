@@ -53,6 +53,8 @@ public class Minion extends Card implements Cloneable {
 			this.currentHP = 0;
 
 		}
+		if(currentHP==0)
+			listener.onMinionDeath(this);
 	}
 
 	public int getAttack() {
