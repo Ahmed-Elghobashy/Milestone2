@@ -202,6 +202,7 @@ public abstract class Hero  implements MinionListener{
 		validator.validatePlayingMinion(m);
 		validator.validateManaCost(m);
 		validator.validateTurn(this);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-m.getManaCost());
 		getHand().remove(m);
 		getField().add(m);
 	}
@@ -225,6 +226,7 @@ public abstract class Hero  implements MinionListener{
 	{
 		validator.validateTurn(this);
 		validator.validateManaCost((Card) s);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(field);
 		hand.remove(s);
 	}
@@ -232,6 +234,7 @@ public abstract class Hero  implements MinionListener{
 	{
 		validator.validateTurn(this);
 		validator.validateManaCost((Card) s);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(oppField, field);
 		hand.remove(s);
 		
@@ -242,6 +245,7 @@ public abstract class Hero  implements MinionListener{
 	{
 		validator.validateTurn(this);
 		validator.validateManaCost((Card) s);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(m);
 		hand.remove(s);
 	}
@@ -249,6 +253,7 @@ public abstract class Hero  implements MinionListener{
 	{
 		validator.validateTurn(this);
 		validator.validateManaCost((Card) s);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(h);
 		hand.remove(s);
 	}
@@ -256,6 +261,7 @@ public abstract class Hero  implements MinionListener{
 	 {
 		 validator.validateTurn(this);
 		 validator.validateManaCost((Card) s);
+		 this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		 this.currentHP+=(s.performAction(m));
 		 hand.remove(s);
 	 }
