@@ -45,10 +45,21 @@ public class Warlock extends Hero {
 				throw new FullHandException(getDeck().get(0));
 			else 
 			{
+				if(hasWilfred() && !getDeck().isEmpty())
+					getDeck().get(0).setManaCost(0);
 			  getHand().add(drawCard());
 			}
 			target.setCurrentHP(target.getCurrentHP()-2);
 			
+	}
+	
+	
+	public boolean hasWilfred()
+	{
+		for(Minion minion : getField())
+			if(minion.getName().equals("Wilfred Fizzlebang"))
+				return true;
+		return false;
 	}
 	
 

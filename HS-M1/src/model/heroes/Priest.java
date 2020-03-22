@@ -44,8 +44,21 @@ public class Priest extends Hero {
 			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException {
 			
 		super.useHeroPower();
-		target.setCurrentHP(target.getCurrentHP()+2);
+		if(hasProphetVelen())
+			target.setCurrentHP(target.getCurrentHP()+8);
+		else
+			target.setCurrentHP(target.getCurrentHP()+2);
 		
+	}
+	
+	public boolean hasProphetVelen()
+	{
+		for(Minion minion : getField())
+		{
+			if(minion.getName().equals("Prophet Velen"))
+				return true;
+		}
+		return false;
 	}
 	
 
