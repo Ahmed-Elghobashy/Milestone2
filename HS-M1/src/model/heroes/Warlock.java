@@ -48,7 +48,7 @@ public class Warlock extends Hero {
 			  getHand().add(drawCard());
 			}
 			target.setCurrentHP(target.getCurrentHP()-2);
-			//drawCard();
+			
 	}
 	
 

@@ -41,14 +41,13 @@ public class Hunter extends Hero {
 	}
 
 	
-	public void useHeroPower(Object target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
+	public void useHeroPower(Hero target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
 			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
 	{
 		super.useHeroPower();
-		if(target instanceof Hero)
-		{
-			((Hero) target).setCurrentHP(((Hero) target).getCurrentHP()-2);
-		}
+		
+			target.setCurrentHP(target.getCurrentHP()-2);
+		
 		
 	}
 	
