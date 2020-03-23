@@ -37,7 +37,7 @@ public class Priest extends Hero {
 			getDeck().add(new ShadowWordDeath());
 		}
 		Minion velen=new Minion("Prophet Velen", 7, Rarity.LEGENDARY, 7, 7, false, false, false);
-		
+		velen.setListener(this);
 		getDeck().add(velen);
 		Collections.shuffle(getDeck());
 

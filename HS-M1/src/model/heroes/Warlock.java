@@ -36,6 +36,7 @@ public class Warlock extends Hero {
 			getDeck().add(new TwistingNether());
 		}
 		Minion wilfred=new Minion("Wilfred Fizzlebang",6,Rarity.LEGENDARY,4,4,false,false,false);
+		wilfred.setListener(this);
 		getDeck().add(wilfred);
 		Collections.shuffle(getDeck());
 

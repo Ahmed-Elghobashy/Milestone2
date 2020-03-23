@@ -39,7 +39,7 @@ public class Hunter extends Hero {
 			
 		}
 		Minion krush=(new Minion("King Krush", 9, Rarity.LEGENDARY, 8, 8, false, false, true));
-		
+		krush.setListener(this);
 		getDeck().add(krush);
 		Collections.shuffle(getDeck());
 	}

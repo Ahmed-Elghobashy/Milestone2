@@ -36,7 +36,7 @@ public class Paladin extends Hero
 			getDeck().add(new LevelUp());
 		}
 		Minion tirion=new Minion("Tirion Fordring", 4, Rarity.LEGENDARY, 6, 6, true, true, false);
-	
+		tirion.setListener(this);
 		getDeck().add(tirion);
 		Collections.shuffle(getDeck());
 	}
