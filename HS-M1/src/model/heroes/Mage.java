@@ -24,6 +24,10 @@ public class Mage extends Hero {
 	@Override
 	public void buildDeck() throws IOException, CloneNotSupportedException {
 		ArrayList<Minion> neutrals = getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),13);
+		for (Minion minion : neutrals) 
+		{
+			minion.setListener(this);
+		}
 		getDeck().addAll(neutrals);
 		for (int i = 0; i < 2; i++) {
 			getDeck().add(new Polymorph());
