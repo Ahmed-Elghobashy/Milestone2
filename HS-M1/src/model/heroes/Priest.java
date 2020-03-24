@@ -45,7 +45,8 @@ public class Priest extends Hero {
 
 	
 	public void useHeroPower(Minion target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
-			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException {
+			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
+	{
 			
 		super.useHeroPower();
 		if(hasProphetVelen())
@@ -54,6 +55,18 @@ public class Priest extends Hero {
 			target.setCurrentHP(target.getCurrentHP()+2);
 		
 	}
+	
+	public void useHeroPower(Hero target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
+	NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
+	{
+	
+		super.useHeroPower();
+		if(hasProphetVelen())
+			target.setCurrentHP(target.getCurrentHP()+8);
+		else
+			target.setCurrentHP(target.getCurrentHP()+2);
+
+}
 	
 	public boolean hasProphetVelen()
 	{
