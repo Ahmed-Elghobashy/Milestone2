@@ -116,7 +116,7 @@ public class Game implements ActionValidator , HeroListener
 		{
 		 throw new CannotAttackException();
 		} 
-		if(!currentHero.getField().contains(attacker) && currentHero.getHand().contains(attacker))
+		if(!currentHero.getField().contains(attacker))
 		{
 			throw new NotSummonedException();
 			
