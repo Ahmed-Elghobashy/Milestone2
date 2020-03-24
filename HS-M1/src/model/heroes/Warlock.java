@@ -24,6 +24,10 @@ public class Warlock extends Hero {
 	@Override
 	public void buildDeck() throws IOException, CloneNotSupportedException {
 		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),13);
+		for (Minion minion : neutrals) 
+		{
+			minion.setListener(this);
+		}
 		getDeck().addAll(neutrals);
 		for(int i = 0 ; i < 2; i++)
 		{
@@ -32,6 +36,7 @@ public class Warlock extends Hero {
 			getDeck().add(new TwistingNether());
 		}
 		Minion wilfred=new Minion("Wilfred Fizzlebang",6,Rarity.LEGENDARY,4,4,false,false,false);
+		wilfred.setListener(this);
 		getDeck().add(wilfred);
 		Collections.shuffle(getDeck());
 

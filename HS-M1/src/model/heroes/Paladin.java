@@ -25,6 +25,10 @@ public class Paladin extends Hero
 	public void buildDeck() throws IOException, CloneNotSupportedException 
 	{
 		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),15);
+		for (Minion minion : neutrals) 
+		{
+			minion.setListener(this);
+		}
 		getDeck().addAll(neutrals);
 		for(int i = 0 ; i < 2; i++)
 		{
@@ -32,7 +36,7 @@ public class Paladin extends Hero
 			getDeck().add(new LevelUp());
 		}
 		Minion tirion=new Minion("Tirion Fordring", 4, Rarity.LEGENDARY, 6, 6, true, true, false);
-	
+		tirion.setListener(this);
 		getDeck().add(tirion);
 		Collections.shuffle(getDeck());
 	}

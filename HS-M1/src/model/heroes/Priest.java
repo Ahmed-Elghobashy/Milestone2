@@ -25,6 +25,10 @@ public class Priest extends Hero {
 	@Override
 	public void buildDeck() throws IOException, CloneNotSupportedException {
 		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),13);
+		for (Minion minion : neutrals) 
+		{
+			minion.setListener(this);
+		}
 		getDeck().addAll(neutrals);
 		for(int i = 0 ; i < 2; i++)
 		{
@@ -33,7 +37,7 @@ public class Priest extends Hero {
 			getDeck().add(new ShadowWordDeath());
 		}
 		Minion velen=new Minion("Prophet Velen", 7, Rarity.LEGENDARY, 7, 7, false, false, false);
-		
+		velen.setListener(this);
 		getDeck().add(velen);
 		Collections.shuffle(getDeck());
 
@@ -41,7 +45,8 @@ public class Priest extends Hero {
 
 	
 	public void useHeroPower(Minion target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
-			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException {
+			NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
+	{
 			
 		super.useHeroPower();
 		if(hasProphetVelen())
@@ -50,6 +55,18 @@ public class Priest extends Hero {
 			target.setCurrentHP(target.getCurrentHP()+2);
 		
 	}
+	
+	public void useHeroPower(Hero target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
+	NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException 
+	{
+	
+		super.useHeroPower();
+		if(hasProphetVelen())
+			target.setCurrentHP(target.getCurrentHP()+8);
+		else
+			target.setCurrentHP(target.getCurrentHP()+2);
+
+}
 	
 	public boolean hasProphetVelen()
 	{
