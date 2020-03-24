@@ -2,6 +2,7 @@ package engine;
 
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import exceptions.CannotAttackException;
@@ -14,10 +15,15 @@ import exceptions.NotSummonedException;
 import exceptions.NotYourTurnException;
 import exceptions.TauntBypassException;
 import model.cards.Card;
+import model.cards.Rarity;
 import model.cards.minions.Icehowl;
 import model.cards.minions.Minion;
+import model.cards.spells.Flamestrike;
+import model.cards.spells.HolyNova;
+import model.cards.spells.Polymorph;
 import model.heroes.Hero;
 import model.heroes.HeroListener;
+import model.heroes.Warlock;
 
 public class Game implements ActionValidator , HeroListener 
 {
@@ -27,7 +33,7 @@ public class Game implements ActionValidator , HeroListener
 	private Hero opponent;
 	private GameListener listener;
 	
-	public Game(Hero p1, Hero p2)
+	public Game(Hero p1, Hero p2) throws FullHandException, CloneNotSupportedException
 	{
 		firstHero=p1;
 		secondHero=p2;
@@ -40,6 +46,10 @@ public class Game implements ActionValidator , HeroListener
 		opponent= currentHero==firstHero?secondHero:firstHero;
 		currentHero.setCurrentManaCrystals(1);
 		currentHero.setTotalManaCrystals(1);
+		for(int i=0;i<3;i++)
+			currentHero.drawCard();
+		for(int i=0;i<4;i++)
+			opponent.drawCard();
 		
 	}
 
@@ -76,11 +86,13 @@ public class Game implements ActionValidator , HeroListener
 		{
 		 throw new CannotAttackException();
 		} 
-		if(!currentHero.getField().contains(attacker) && currentHero.getHand().contains(attacker))
+		if(!currentHero.getField().contains(attacker))
 		{
 			throw new NotSummonedException();
 			
-		}	
+		}
+		if(!opponent.getField().contains(target))
+			throw new NotSummonedException();
 		if(!target.isTaunt() && hasTaunt(opponent))
 		{
 			throw new TauntBypassException() ;
@@ -161,7 +173,6 @@ public class Game implements ActionValidator , HeroListener
 
 	public void onHeroDeath()
 	{
-		if(currentHero.getCurrentHP()==0 || opponent.getCurrentHP()==0)
 			listener.onGameOver();
 	}
 
@@ -212,7 +223,31 @@ public class Game implements ActionValidator , HeroListener
 	}
 
 	
-	
+	public static void main(String[] args) throws IOException, CloneNotSupportedException, FullHandException, NotYourTurnException, NotEnoughManaException, FullFieldException, HeroPowerAlreadyUsedException, InvalidTargetException
+	{
+		Warlock w1 = new Warlock();
+		Warlock w2 = new Warlock();
+		Game G1 = new Game(w1, w2);
+		Minion wilfred=new Minion("Wilfred Fizzlebang",6,Rarity.LEGENDARY,4,4,false,false,false);
+		w1.setCurrentManaCrystals(20);
+		w2.setCurrentManaCrystals(20);
+		w1.getHand().add(wilfred);
+		w2.getHand().add(wilfred);
+		Minion testMinion = new Minion("7masa", 0, null, 0, 2, false, false, false);
+		Minion testMinion1 = new Minion("7masa", 0, null, 0, 2, false, false, false);
+		Minion testMinion2= new Minion("7masa", 0, null, 0, 2, false, false, false);
+		testMinion.setListener(w1);
+		testMinion1.setListener(w1);
+		testMinion2.setListener(w1);
+		w1.getField().add(testMinion);
+		w1.getField().add(testMinion1);
+		w1.getField().add(testMinion2);
+		Flamestrike f1 = new Flamestrike();
+		Polymorph p = new Polymorph();
+		HolyNova h = new HolyNova();
+		h.performAction(w1.getField(), w2.getField());
+		System.out.println(testMinion1.getCurrentHP());
+	}		
 	
 
 }

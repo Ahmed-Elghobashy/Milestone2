@@ -39,6 +39,7 @@ public class Paladin extends Hero
 		tirion.setListener(this);
 		getDeck().add(tirion);
 		Collections.shuffle(getDeck());
+		
 	}
 
 	
@@ -50,6 +51,9 @@ public class Paladin extends Hero
 			throw new FullFieldException();
 		Minion newMinion = new Minion("Silver Hand Recruit", 1, Rarity.BASIC, 1, 1, false, false, false);
 		this.getField().add(newMinion);
+		this.setCurrentManaCrystals(getCurrentManaCrystals()-2);
+		this.setHeroPowerUsed(true);
+		
 	}
 	
 }

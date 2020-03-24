@@ -46,6 +46,7 @@ public abstract class Hero  implements MinionListener{
 	{
 		validator.validateTurn(this);
 		validator.validateUsingHeroPower(this);
+		
 	}
 
 	public abstract void buildDeck() throws IOException,CloneNotSupportedException;
@@ -133,7 +134,7 @@ public abstract class Hero  implements MinionListener{
 			this.currentHP = 0;
 			
 		}
-		if(currentHP==0)
+		if(this.currentHP==0)
 			listener.onHeroDeath();
 	}
 
@@ -185,7 +186,7 @@ public abstract class Hero  implements MinionListener{
 
 	public void onMinionDeath(Minion minion)
 	{
-		deck.remove(minion);
+		field.remove(minion);
 	}
 
 	public HeroListener getListener() {
@@ -290,9 +291,13 @@ public abstract class Hero  implements MinionListener{
 		 }
 		 if(deck.size()==0)
 		 {
-			 this.setCurrentHP(getCurrentHP()-(++fatigueDamage));
+			 fatigueDamage++;
+			 this.setCurrentHP(getCurrentHP()-(fatigueDamage));
 			 return null;
 		 }
+		 if(hasWilfred() && !getDeck().isEmpty())
+			 if(!(getDeck().get(0) instanceof Spell))
+				getDeck().get(0).setManaCost(0);
 		 Card toBeDrawn =deck.remove(0);
 		 Card clone =toBeDrawn.clone();
 		 getHand().add(toBeDrawn);
@@ -319,17 +324,24 @@ public abstract class Hero  implements MinionListener{
 	 public void kalycgosEffect(Spell s)
 	 {
 		 if(this instanceof Mage)
-		 {
+		    {
 			 for (Minion minion : getField())
-		 {
+		      {
 				 if(minion.getName()=="Kalycgos")
 					 {
 					 s.setManaCost(s.getManaCost()-4);
 					 return;
 					 }
-		 }
-		 
-	     }
+		         }
+		  
+	          }
 	   }
+	 public boolean hasWilfred()
+		{
+			for(Minion minion : getField())
+				if(minion.getName().equals("Wilfred Fizzlebang"))
+					return true;
+			return false;
+		}
 	 
  }	 

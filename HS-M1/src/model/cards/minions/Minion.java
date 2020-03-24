@@ -49,10 +49,12 @@ public class Minion extends Card implements Cloneable {
 		this.currentHP = currentHP;
 		if (this.currentHP > maxHP)
 			this.currentHP = maxHP;
-		else if (this.currentHP <= 0) {
+		else if (this.currentHP <= 0) 
+		{
 			this.currentHP = 0;
-			listener.onMinionDeath(this);
 		}
+		if(this.currentHP==0)
+			listener.onMinionDeath(this);
 	}
 
 	public int getAttack() {
@@ -94,13 +96,12 @@ public class Minion extends Card implements Cloneable {
 	}
 	public void attack(Minion target) {
 		this.setAttacked(true);
-		this.setSleeping(true);
-		if(this.isDivine())
+		if(this.isDivine() && target.getAttack()!=0)
 			this.setDivine(false);
 		else {
 			this.setCurrentHP(this.getCurrentHP()-target.attack);
 		}
-		if(target.isDivine())
+		if(target.isDivine() && this.getAttack()!=0)
 			target.setDivine(false);
 		else {
 			target.setCurrentHP(target.getCurrentHP()-this.attack);

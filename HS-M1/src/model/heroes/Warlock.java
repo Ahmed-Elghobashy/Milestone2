@@ -55,8 +55,27 @@ public class Warlock extends Hero {
 			  getHand().add(drawCard());
 			}
 			target.setCurrentHP(target.getCurrentHP()-2);
+			this.setCurrentManaCrystals(getCurrentManaCrystals()-2);
+			this.setHeroPowerUsed(true);
 			
 	}
+	public void useHeroPower() throws NotEnoughManaException, HeroPowerAlreadyUsedException,
+	NotYourTurnException, FullHandException, FullFieldException, CloneNotSupportedException
+{
+	super.useHeroPower();
+	if(this.getHand().size()==10)
+		throw new FullHandException(getDeck().get(0));
+	else 
+	{
+		if(hasWilfred() && !getDeck().isEmpty())
+			getDeck().get(0).setManaCost(0);
+	  drawCard();
+	}
+	this.setCurrentHP(this.getCurrentHP()-2);
+	this.setCurrentManaCrystals(getCurrentManaCrystals()-2);
+	this.setHeroPowerUsed(true);
+	
+}
 	
 	
 	public boolean hasWilfred()
