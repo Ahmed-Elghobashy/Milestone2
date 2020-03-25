@@ -46,6 +46,8 @@ public abstract class Hero  implements MinionListener{
 	{
 		validator.validateTurn(this);
 		validator.validateUsingHeroPower(this);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-2);
+		this.setHeroPowerUsed(true);
 		
 	}
 
@@ -295,20 +297,14 @@ public abstract class Hero  implements MinionListener{
 			 this.setCurrentHP(getCurrentHP()-(fatigueDamage));
 			 return null;
 		 }
-		 if(hasWilfred() && !getDeck().isEmpty())
-			 if(!(getDeck().get(0) instanceof Spell))
-				getDeck().get(0).setManaCost(0);
+		 if(hasWilfred()  && getDeck().get(0) instanceof Minion) {
+				getDeck().get(0).setManaCost(0);}
 		 Card toBeDrawn =deck.remove(0);
 		 Card clone =toBeDrawn.clone();
 		 getHand().add(toBeDrawn);
 		 if(hasChromaggus(this))
-			 if(hand.size()==10)
-				 throw new FullHandException(clone);
-		     else
-		     {
-		    	 hand.add(clone);
-			 } 
-			 
+			 if(hand.size()<10)
+		     	 hand.add(clone);
 		  return toBeDrawn;
 	 }
 	 public static boolean hasChromaggus(Hero hero)
