@@ -287,16 +287,18 @@ public abstract class Hero  implements MinionListener{
 	 
 	 public Card drawCard() throws FullHandException, CloneNotSupportedException
 	 {
+		 if(deck.size()==1)
+			 this.fatigueDamage=1;
+		 if(deck.size()==0)
+		 {
+			 this.setCurrentHP(getCurrentHP()-(fatigueDamage++));
+			 return null;
+		 }
 		 if(hand.size()==10)
 		 {
 			 throw new FullHandException(deck.get(0));
 		 }
-		 if(deck.size()==0)
-		 {
-			 fatigueDamage++;
-			 this.setCurrentHP(getCurrentHP()-(fatigueDamage));
-			 return null;
-		 }
+		
 		 if(hasWilfred()  && getDeck().get(0) instanceof Minion) {
 				getDeck().get(0).setManaCost(0);}
 		 Card toBeDrawn =deck.remove(0);
