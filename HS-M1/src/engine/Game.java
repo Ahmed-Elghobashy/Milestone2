@@ -21,6 +21,7 @@ import model.cards.minions.Minion;
 import model.cards.spells.Flamestrike;
 import model.cards.spells.HolyNova;
 import model.cards.spells.Polymorph;
+import model.cards.spells.Spell;
 import model.heroes.Hero;
 import model.heroes.HeroListener;
 import model.heroes.Warlock;
@@ -233,20 +234,35 @@ public class Game implements ActionValidator , HeroListener
 		w2.setCurrentManaCrystals(20);
 		w1.getHand().add(wilfred);
 		w2.getHand().add(wilfred);
+		wilfred.setListener(w1);
 		Minion testMinion = new Minion("7masa", 0, null, 0, 2, false, false, false);
 		Minion testMinion1 = new Minion("7masa", 0, null, 0, 2, false, false, false);
 		Minion testMinion2= new Minion("7masa", 0, null, 0, 2, false, false, false);
 		testMinion.setListener(w1);
 		testMinion1.setListener(w1);
 		testMinion2.setListener(w1);
-		w1.getField().add(testMinion);
-		w1.getField().add(testMinion1);
-		w1.getField().add(testMinion2);
-		Flamestrike f1 = new Flamestrike();
-		Polymorph p = new Polymorph();
-		HolyNova h = new HolyNova();
-		h.performAction(w1.getField(), w2.getField());
-		System.out.println(testMinion1.getCurrentHP());
+		w1.playMinion(wilfred);
+//		Flamestrike f1 = new Flamestrike();
+//		Polymorph p = new Polymorph();
+//		HolyNova h = new HolyNova();
+//		h.performAction(w1.getField(), w2.getField());
+//		System.out.println(testMinion1.getCurrentHP());
+		Minion chromaggusMinion = new Minion("Chromaggus", 0, Rarity.BASIC, 0, 10, false, false, false);
+		chromaggusMinion.setListener(w1);
+		w1.getHand().add(chromaggusMinion);
+		w1.playMinion(chromaggusMinion);
+		
+//		while(!(w1.getDeck().get(0) instanceof Spell))
+//		{
+//			w1.getDeck().remove(0);
+//		}
+		w1.getDeck().clear();
+		Minion testMinion4 = new Minion("7masa", 5, null, 0, 2, false, false, false);
+
+		Spell testSpell = new Polymorph();
+		w1.getDeck().add(testMinion4);
+		Card card = w1.drawCard();
+		System.out.println(card.getManaCost() + card.getName());
 	}		
 	
 

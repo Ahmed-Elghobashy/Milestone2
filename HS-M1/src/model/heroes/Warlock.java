@@ -13,6 +13,7 @@ import model.cards.Rarity;
 import model.cards.minions.Minion;
 import model.cards.spells.CurseOfWeakness;
 import model.cards.spells.SiphonSoul;
+import model.cards.spells.Spell;
 import model.cards.spells.TwistingNether;
 
 public class Warlock extends Hero {
@@ -48,12 +49,12 @@ public class Warlock extends Hero {
 			super.useHeroPower();
 			if(this.getHand().size()==10)
 				throw new FullHandException(getDeck().get(0));
-			else 
-			{
-				if(hasWilfred() && !getDeck().isEmpty())
-					getDeck().get(0).setManaCost(0);
-			  getHand().add(drawCard());
-			}
+//			else 
+//			{
+//				if(hasWilfred() && !getDeck().isEmpty())
+//					getDeck().get(0).setManaCost(0);
+//			  getHand().add(drawCard());
+//			}
 			target.setCurrentHP(target.getCurrentHP()-2);
 			this.setCurrentManaCrystals(getCurrentManaCrystals()-2);
 			this.setHeroPowerUsed(true);
@@ -68,6 +69,7 @@ public class Warlock extends Hero {
 	else 
 	{
 		if(hasWilfred() && !getDeck().isEmpty())
+			if(!(getDeck().get(0) instanceof Spell))
 			getDeck().get(0).setManaCost(0);
 	  drawCard();
 	}
