@@ -53,8 +53,7 @@ public class Priest extends Hero {
 			target.setCurrentHP(target.getCurrentHP()+8);
 		else
 			target.setCurrentHP(target.getCurrentHP()+2);
-		this.setCurrentManaCrystals(getCurrentManaCrystals()-2);
-		this.setHeroPowerUsed(true);
+
 	}
 	
 	public void useHeroPower(Hero target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
@@ -66,9 +65,7 @@ public class Priest extends Hero {
 			target.setCurrentHP(target.getCurrentHP()+8);
 		else
 			target.setCurrentHP(target.getCurrentHP()+2);
-		this.setCurrentManaCrystals(getCurrentManaCrystals()-2);
-		this.setHeroPowerUsed(true);
-
+		
 }
 	
 	public boolean hasProphetVelen()

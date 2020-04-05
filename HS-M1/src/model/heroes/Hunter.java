@@ -51,8 +51,7 @@ public class Hunter extends Hero {
 		super.useHeroPower();
 		
 			target.setCurrentHP(target.getCurrentHP()-2);
-			this.setCurrentManaCrystals(getCurrentManaCrystals()-2);
-			this.setHeroPowerUsed(true);
+			
 		
 		
 	}

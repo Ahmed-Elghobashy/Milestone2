@@ -323,7 +323,7 @@ public abstract class Hero  implements MinionListener{
 		    {
 			 for (Minion minion : getField())
 		      {
-				 if(minion.getName()=="Kalycgos")
+				 if(minion.getName().equals("Kalycgos"))
 					 {
 					 s.setManaCost(s.getManaCost()-4);
 					 return;

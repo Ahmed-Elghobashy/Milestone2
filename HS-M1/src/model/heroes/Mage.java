@@ -49,8 +49,6 @@ public class Mage extends Hero {
 			target.setDivine(false);
 		else 
 			target.setCurrentHP(target.getCurrentHP()-1);
-		this.setCurrentManaCrystals(getCurrentManaCrystals()-2);
-		this.setHeroPowerUsed(true);
 	}
 	
 	public void useHeroPower(Hero target) throws NotEnoughManaException, HeroPowerAlreadyUsedException,
@@ -58,8 +56,7 @@ public class Mage extends Hero {
 	{
 		super.useHeroPower();
 		target.setCurrentHP(target.getCurrentHP()-1);
-		this.setCurrentManaCrystals(getCurrentManaCrystals()-2);
-		this.setHeroPowerUsed(true);
+
 	}
 	
 
