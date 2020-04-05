@@ -109,7 +109,7 @@ public class Minion extends Card implements Cloneable {
 	}
 	public void attack(Hero target)throws InvalidTargetException
  {
-		if(this instanceof Icehowl)
+		if(this.getName().equals("Icehowl"))
 			throw new InvalidTargetException();
 		else {
 			this.setAttacked(true);

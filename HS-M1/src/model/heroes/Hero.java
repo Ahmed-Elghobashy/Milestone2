@@ -232,8 +232,8 @@ public abstract class Hero  implements MinionListener{
 		if(this instanceof Mage)
 		 kalycgosEffect((Spell)s);
 		validator.validateManaCost((Card) s);
-		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(field);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		hand.remove(s);
 	}
 	public void castSpell(AOESpell s, ArrayList<Minion >oppField) throws NotYourTurnException, NotEnoughManaException
@@ -242,8 +242,8 @@ public abstract class Hero  implements MinionListener{
 		if(this instanceof Mage)
 			kalycgosEffect((Spell)s);
 		validator.validateManaCost((Card) s);
-		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(oppField, field);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		hand.remove(s);
 		
 		
@@ -255,8 +255,8 @@ public abstract class Hero  implements MinionListener{
 		if(this instanceof Mage)
 			kalycgosEffect((Spell)s);
 		validator.validateManaCost((Card) s);
-		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(m);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		hand.remove(s);
 	}
 	public void castSpell(HeroTargetSpell s, Hero h) throws NotYourTurnException, NotEnoughManaException
@@ -265,8 +265,8 @@ public abstract class Hero  implements MinionListener{
 		if(this instanceof Mage)
 			kalycgosEffect((Spell)s);
 		validator.validateManaCost((Card) s);
-		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		s.performAction(h);
+		this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
 		hand.remove(s);
 	}
 	 public void castSpell(LeechingSpell s, Minion m) throws NotYourTurnException, NotEnoughManaException
@@ -275,8 +275,8 @@ public abstract class Hero  implements MinionListener{
 		 if(this instanceof Mage)
 			 kalycgosEffect((Spell)s);
 		 validator.validateManaCost((Card) s);
+		 this.setCurrentHP(this.currentHP+(s.performAction(m)));
 		 this.setCurrentManaCrystals(this.getCurrentManaCrystals()-((Card) s).getManaCost());
-		 this.currentHP+=(s.performAction(m));
 		 hand.remove(s);
 	 }
 	 public void endTurn() throws FullHandException, CloneNotSupportedException
@@ -299,8 +299,6 @@ public abstract class Hero  implements MinionListener{
 			 throw new FullHandException(deck.get(0));
 		 }
 		
-		 if(hasWilfred()  && getDeck().get(0) instanceof Minion) {
-				getDeck().get(0).setManaCost(0);}
 		 Card toBeDrawn =deck.remove(0);
 		 Card clone =toBeDrawn.clone();
 		 getHand().add(toBeDrawn);

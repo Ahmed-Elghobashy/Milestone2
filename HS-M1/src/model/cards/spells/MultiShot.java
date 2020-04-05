@@ -38,7 +38,7 @@ public class MultiShot extends Spell implements AOESpell
         // We must check that the Minion we are attacking was not attacked before 
 		 int randIndex =(int) (Math.random()*oppField.size());
 		 Minion randMinion= oppField.get(randIndex);
-	     if(randMinion!=firstMinionAttacked || firstMinionAttacked==null)
+	     if(firstMinionAttacked==null || randMinion!=firstMinionAttacked)
 		  {
 	    	 if(randMinion.isDivine())
 	    		 randMinion.setDivine(false);
