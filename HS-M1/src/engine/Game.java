@@ -224,46 +224,46 @@ public class Game implements ActionValidator , HeroListener
 	}
 
 	
-	public static void main(String[] args) throws IOException, CloneNotSupportedException, FullHandException, NotYourTurnException, NotEnoughManaException, FullFieldException, HeroPowerAlreadyUsedException, InvalidTargetException
-	{
-		Warlock w1 = new Warlock();
-		Warlock w2 = new Warlock();
-		Game G1 = new Game(w1, w2);
-		Minion wilfred=new Minion("Wilfred Fizzlebang",6,Rarity.LEGENDARY,4,4,false,false,false);
-		w1.setCurrentManaCrystals(20);
-		w2.setCurrentManaCrystals(20);
-		w1.getHand().add(wilfred);
-		w2.getHand().add(wilfred);
-		wilfred.setListener(w1);
-		Minion testMinion = new Minion("7masa", 0, null, 0, 2, false, false, false);
-		Minion testMinion1 = new Minion("7masa", 0, null, 0, 2, false, false, false);
-		Minion testMinion2= new Minion("7masa", 0, null, 0, 2, false, false, false);
-		testMinion.setListener(w1);
-		testMinion1.setListener(w1);
-		testMinion2.setListener(w1);
-		w1.playMinion(wilfred);
-//		Flamestrike f1 = new Flamestrike();
-//		Polymorph p = new Polymorph();
-//		HolyNova h = new HolyNova();
-//		h.performAction(w1.getField(), w2.getField());
-//		System.out.println(testMinion1.getCurrentHP());
-		Minion chromaggusMinion = new Minion("Chromaggus", 0, Rarity.BASIC, 0, 10, false, false, false);
-		chromaggusMinion.setListener(w1);
-		w1.getHand().add(chromaggusMinion);
-		w1.playMinion(chromaggusMinion);
-		
-//		while(!(w1.getDeck().get(0) instanceof Spell))
-//		{
-//			w1.getDeck().remove(0);
-//		}
-		w1.getDeck().clear();
-		Minion testMinion4 = new Minion("7masa", 5, null, 0, 2, false, false, false);
-
-		Spell testSpell = new Polymorph();
-		w1.getDeck().add(testMinion4);
-		Card card = w1.drawCard();
-		System.out.println(card.getManaCost() + card.getName());
-	}		
+//	public static void main(String[] args) throws IOException, CloneNotSupportedException, FullHandException, NotYourTurnException, NotEnoughManaException, FullFieldException, HeroPowerAlreadyUsedException, InvalidTargetException
+//	{
+//		Warlock w1 = new Warlock();
+//		Warlock w2 = new Warlock();
+//		Game G1 = new Game(w1, w2);
+//		Minion wilfred=new Minion("Wilfred Fizzlebang",6,Rarity.LEGENDARY,4,4,false,false,false);
+//		w1.setCurrentManaCrystals(20);
+//		w2.setCurrentManaCrystals(20);
+//		w1.getHand().add(wilfred);
+//		w2.getHand().add(wilfred);
+//		wilfred.setListener(w1);
+//		Minion testMinion = new Minion("7masa", 0, null, 0, 2, false, false, false);
+//		Minion testMinion1 = new Minion("7masa", 0, null, 0, 2, false, false, false);
+//		Minion testMinion2= new Minion("7masa", 0, null, 0, 2, false, false, false);
+//		testMinion.setListener(w1);
+//		testMinion1.setListener(w1);
+//		testMinion2.setListener(w1);
+//		w1.playMinion(wilfred);
+////		Flamestrike f1 = new Flamestrike();
+////		Polymorph p = new Polymorph();
+////		HolyNova h = new HolyNova();
+////		h.performAction(w1.getField(), w2.getField());
+////		System.out.println(testMinion1.getCurrentHP());
+//		Minion chromaggusMinion = new Minion("Chromaggus", 0, Rarity.BASIC, 0, 10, false, false, false);
+//		chromaggusMinion.setListener(w1);
+//		w1.getHand().add(chromaggusMinion);
+//		w1.playMinion(chromaggusMinion);
+//		
+////		while(!(w1.getDeck().get(0) instanceof Spell))
+////		{
+////			w1.getDeck().remove(0);
+////		}
+//		w1.getDeck().clear();
+//		Minion testMinion4 = new Minion("7masa", 5, null, 0, 2, false, false, false);
+//
+//		Spell testSpell = new Polymorph();
+//		w1.getDeck().add(testMinion4);
+//		Card card = w1.drawCard();
+//		System.out.println(card.getManaCost() + card.getName());
+//	}		
 	
 
 }
